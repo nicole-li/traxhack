@@ -14,12 +14,12 @@ import {
    Header
  } from 'react-native-elements'
 
-import Compass from './components/Compass.js'
+import Compass from './Compass.js'
 
 import {
   MapView
 } from 'expo';
-const OG_IMG = require('./assets/White.jpg')
+const OG_IMG = require('../assets/White.jpg')
 const {Marker} = MapView;
 const MarkerList = [
     {
@@ -83,7 +83,7 @@ const MarkerList = [
       }
     }
 ];
-class App extends React.Component {
+class Map extends React.Component {
   constructor(props)
   {
     super(props)
@@ -182,20 +182,37 @@ class App extends React.Component {
       <View style={{
           flex: 1
         }}>
-        <ImageBackground source={OG_IMG} style={{opacity:0.75,width:400,height:80, alignItems:'center', justifyContent:'flex-end'}}>
+
+        <ImageBackground source={OG_IMG} style={{opacity:0.75,width:400,height:75, alignItems:'center', justifyContent:'flex-end'}}>
           {/* <Header
             outerContainerStyles ={{height:90, paddingTop:30}}
             innerContainerStyles={{alignItems:'center'}}
             backgroundColor={'#f8f2ec'}
           centerComponent={ */}
-            <View style={{alignItems:'center'}}>
+        <View style={{flexDirection: 'row', flexWrap:'wrap', flex:0.5}}>
+      <View style={{flex:0.26}}></View>
+
             <Text style={{fontFamily: 'Times New Roman', fontStyle:'italic', fontSize:28, fontWeight:'bold', color:'red'}}><Text style={{fontSize:40, fontWeight:'bold', color:'orange'}}>T
               <Text style={{fontSize:40, fontWeight:'bold', color:'#e6e600'}}
               >R<Text style={{fontSize:40, fontWeight:'bold', color:'green'}}>
               A<Text style={{fontSize:40, fontWeight:'bold', color:'blue'}}>X<Text style={{fontSize:28, fontWeight:'bold', color:'purple'}}>
               </Text></Text></Text></Text></Text></Text>
-            </View>
+              <View style={{flex:0.26}}></View>
+
+
+              <Animated.View style={
+            {
+              marginTop:-22.2,
+            flex: 0.1,
+            backgroundColor: "#ecedef",
+            opacity: this.state.fadeAnim
+            }
+          } >
+            <Compass />
+          </Animated.View>
+
           {/* }/> */}
+        </View>
 
 </ImageBackground>
         <MapView style={{flex: 7, marginBottom:-2}}
@@ -244,3 +261,5 @@ class App extends React.Component {
     );
   }
 }
+
+export default Map
