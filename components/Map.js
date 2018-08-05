@@ -83,9 +83,9 @@ const MarkerList = [
       }
     }
 ];
-export default class App extends React.Component {
+class Map extends React.Component {
   static navigationOptions ={
-    title:"Home"
+    title: 'Home'
   }
 
   constructor(props)

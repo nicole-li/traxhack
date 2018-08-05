@@ -8,7 +8,7 @@ import LiveVideo from "./components/LiveVideo.js";
 
 export default StackNavigator ({
   Map:{
-    screen:Map
+    screen:Map,
   },
   LiveVideo:{
     screen:LiveVideo
