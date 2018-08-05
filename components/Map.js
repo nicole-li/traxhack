@@ -24,7 +24,7 @@ const {Marker} = MapView;
 const MarkerList = [
     {
         id: 1,
-        title: 'Outside Lands',
+        title: "Land's End",
         color: 'red',
         description: 'OutsideLands',
         coordinate: {
@@ -44,7 +44,7 @@ const MarkerList = [
     },
     {
         id: 3,
-        title: 'Lands End',
+        title: 'The Barbary',
         description: 'Pretty riverside camping, but a REALLY nasty road to get there.',
         color:'#e6e600',
         coordinate: {
@@ -64,7 +64,7 @@ const MarkerList = [
     },
     {
       id:5,
-      title: "Pan handle",
+      title: "Panhandle",
       description:"Get Gold",
       color:'blue',
       coordinate:{
@@ -84,6 +84,10 @@ const MarkerList = [
     }
 ];
 class Map extends React.Component {
+  static navigationOptions ={
+    title: 'Home'
+  }
+
   constructor(props)
   {
     super(props)
@@ -120,10 +124,16 @@ class Map extends React.Component {
   }
   markerRender(){
 
-    let x = MarkerList.map((m) => <Marker key={m.id} onPress={()=>console.log("Registered")} pinColor={m.color} description={m.description}
+    let x = MarkerList.map((m) => <Marker key={m.id} onPress={()=>this.displayStage(m.title)} pinColor={m.color} description={m.description}
     coordinate={m.coordinate}/>)
     return x
 
+  }
+
+  displayStage(location) {
+    console.log('ABOUT TO NAVIGATE to', location);
+    const {navigate} = this.props.navigation;
+    navigate('LiveVideo', {location: location});
   }
 
   here()
@@ -162,8 +172,8 @@ class Map extends React.Component {
           onPress={()=>{
             this.setState({longitude: marker.coordinate.longitude,
               latitude: marker.coordinate.latitude,
-              latitudeDelta: marker.title !== "Outside Lands" ? 0.005: 0.015,
-              longitudeDelta: marker.title !== "Outside Lands" ? 0.0125: 0.022
+              latitudeDelta: marker.title !== "Land's End" ? 0.005: 0.015,
+              longitudeDelta: marker.title !== "Land's End" ? 0.0125: 0.022
 
 
             })
@@ -221,12 +231,6 @@ class Map extends React.Component {
             longitude:this.state.longitude,
             latitudeDelta: this.state.latitudeDelta,
             longitudeDelta: this.state.longitudeDelta}}>
-
-
-
-
-
-
 
             {this.markerRender()}
 

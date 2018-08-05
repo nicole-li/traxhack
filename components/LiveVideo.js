@@ -11,12 +11,12 @@ export default class VideoList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            location:"Land's End",
+            location: this.props.navigation.getParam('location', 'text'),
             uri:'',
             artist: '',
             tracks: []
         }
-        axios.post('http://306e44b6.ngrok.io/videoAndArtist',
+        axios.post('http://bdd61e2c.ngrok.io/videoAndArtist',
           // method: 'POST',
           // headers: {
           //   // Accept: 'application/json',
