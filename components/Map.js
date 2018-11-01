@@ -24,7 +24,7 @@ const {Marker} = MapView;
 const MarkerList = [
     {
         id: 1,
-        title: "Land's End",
+        title: "Outside Lands",
         color: 'red',
         description: 'OutsideLands',
         coordinate: {
@@ -44,7 +44,7 @@ const MarkerList = [
     },
     {
         id: 3,
-        title: 'The Barbary',
+        title: 'Lands End',
         description: 'Pretty riverside camping, but a REALLY nasty road to get there.',
         color:'#e6e600',
         coordinate: {
@@ -55,7 +55,7 @@ const MarkerList = [
     {
       id:4,
       title: 'Twin Peaks',
-      description:'Twin shit',
+      description:'Twinning',
       color:'green',
       coordinate: {
         latitude: 37.7697310,
@@ -64,18 +64,18 @@ const MarkerList = [
     },
     {
       id:5,
-      title: "Panhandle",
+      title: "Pan handle",
       description:"Get Gold",
       color:'blue',
       coordinate:{
         latitude:37.769567314571,
-        longitude:-122.48593004432
+        longitude:-122.48493004432
       }
     },
     {
       id:6,
       title:"The House",
-      description: "Good shit by Heinken",
+      description: "Good stuff by Heinken",
       color:'purple',
       coordinate:{
         latitude: 37.7680023,
@@ -85,7 +85,7 @@ const MarkerList = [
 ];
 class Map extends React.Component {
   static navigationOptions ={
-    title: 'Home'
+    header:null
   }
 
   constructor(props)
@@ -131,6 +131,7 @@ class Map extends React.Component {
   }
 
   displayStage(location) {
+    if (location === 'Outside Lands') return;
     console.log('ABOUT TO NAVIGATE to', location);
     const {navigate} = this.props.navigation;
     navigate('LiveVideo', {location: location});
@@ -172,8 +173,8 @@ class Map extends React.Component {
           onPress={()=>{
             this.setState({longitude: marker.coordinate.longitude,
               latitude: marker.coordinate.latitude,
-              latitudeDelta: marker.title !== "Land's End" ? 0.005: 0.015,
-              longitudeDelta: marker.title !== "Land's End" ? 0.0125: 0.022
+              latitudeDelta: marker.title !== "Outside Lands" ? 0.005: 0.015,
+              longitudeDelta: marker.title !== "Outside Lands" ? 0.0125: 0.022
 
 
             })
@@ -193,37 +194,34 @@ class Map extends React.Component {
           flex: 1
         }}>
 
-        <ImageBackground source={OG_IMG} style={{opacity:0.75,width:400,height:75, alignItems:'center', justifyContent:'flex-end'}}>
+        <ImageBackground source={OG_IMG} style={{opacity:0.75,width:400,height:95, alignItems:'center', justifyContent:'flex-end', marginTop:-15}}>
           {/* <Header
             outerContainerStyles ={{height:90, paddingTop:30}}
             innerContainerStyles={{alignItems:'center'}}
             backgroundColor={'#f8f2ec'}
           centerComponent={ */}
-        <View style={{flexDirection: 'row', flexWrap:'wrap', flex:0.5}}>
+        <View style={{flexDirection: 'row', flexWrap:'wrap', flex:0.5, marginBottom:-1}}>
       <View style={{flex:0.26}}></View>
-
-            <Text style={{fontFamily: 'Times New Roman', fontStyle:'italic', fontSize:28, fontWeight:'bold', color:'red'}}><Text style={{fontSize:40, fontWeight:'bold', color:'orange'}}>T
-              <Text style={{fontSize:40, fontWeight:'bold', color:'#e6e600'}}
-              >R<Text style={{fontSize:40, fontWeight:'bold', color:'green'}}>
-              A<Text style={{fontSize:40, fontWeight:'bold', color:'blue'}}>X<Text style={{fontSize:28, fontWeight:'bold', color:'purple'}}>
+            <Text style={{fontFamily: 'Phosphate', fontSize:28, fontWeight:'bold', color:'red'}}>
+            <Text style={{fontSize:40, fontWeight:'bold', color:'orange'}}>
+              t<Text style={{fontSize:40, fontWeight:'bold', color:'#e6e600'}}>
+              r<Text style={{fontSize:40, fontWeight:'bold', color:'green'}}>
+              @<Text style={{fontSize:40, fontWeight:'bold', color:'blue'}}>
+              x<Text style={{fontSize:28, fontWeight:'bold', color:'purple'}}>
               </Text></Text></Text></Text></Text></Text>
               <View style={{flex:0.26}}></View>
-
-
               <Animated.View style={
             {
-              marginTop:-22.2,
-            flex: 0.1,
+              marginTop:-12,
+            flex: 0.125,
             backgroundColor: "#ecedef",
             opacity: this.state.fadeAnim
             }
           } >
             <Compass />
           </Animated.View>
-
           {/* }/> */}
         </View>
-
 </ImageBackground>
         <MapView style={{flex: 7, marginBottom:-2}}
           onRegionChangeComplete= {(region)=>{AsyncStorage.setItem('location', JSON.stringify(region))}}
