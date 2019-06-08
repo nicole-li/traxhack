@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "https-proxy-agent": "^2.2.1",
-    "jest-expo": "^33.0.0",
+    "jest-expo": "^33.0.2",
     "react-native-scripts": "^2.0.1",
     "react-test-renderer": "16.2.0"
   },
@@ -24,7 +24,7 @@
     "expo": "^25.0.0",
     "merge": "^1.2.1",
     "react": "16.2.0",
-    "react-native": "^0.59.8",
+    "react-native": "^0.59.9",
     "react-native-elements": "^0.19.1",
     "react-native-heading": "^1.1.1",
     "react-native-youtube": "^1.1.0",
