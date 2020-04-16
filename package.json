@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "https-proxy-agent": "^2.2.1",
+    "https-proxy-agent": "^2.2.3",
     "jest-expo": "^33.0.2",
     "react-native-scripts": "^2.0.1",
     "react-test-renderer": "16.2.0"
